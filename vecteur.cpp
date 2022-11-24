@@ -190,6 +190,18 @@ bool operator == (vecteur & u, vecteur & v){
     return true;
 }
 
+bool operator != (vecteur &u, vecteur & v){
+    if(&u == &v)
+        return false;
+    if(u.dim()!=v.dim())
+        return true;
+    for (int i = 0; i < u.dim(); ++i) {
+        if(u[i]!=v[i])
+            return true;
+    }
+    return false;
+}
+
 
 
 

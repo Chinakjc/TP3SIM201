@@ -55,7 +55,9 @@ vecteur operator +(vecteur& u);
 vecteur operator -(vecteur& u);
 
 bool operator == (vecteur & u, vecteur & v);
+bool operator != (vecteur & u, vecteur & v);
 
+ostream & operator << (ostream & os, const vecteur & vec);
 
 
 #endif
