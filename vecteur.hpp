@@ -37,14 +37,14 @@ public:
 
     vecteur operator () (int i, int j);
     vecteur& operator += (vecteur& vec);
-    vecteur& operator += (double x);
+    vecteur& operator += (const double x);
     vecteur& operator -= (vecteur& vec);
-    vecteur& operator -= (double x);
+    vecteur& operator -= (const double x);
 
-    vecteur& operator *= (double x);
-    vecteur& operator /= (double x);
-    vecteur operator * (double x);
-    vecteur operator / (double x);
+    vecteur& operator *= (const double x);
+    vecteur& operator /= (const double x);
+    vecteur operator * (const double x);
+    vecteur operator / (const double x);
     vecteur operator * (vecteur& vec);
     vecteur operator / (vecteur& vec);
 
@@ -58,6 +58,8 @@ bool operator == (vecteur & u, vecteur & v);
 bool operator != (vecteur & u, vecteur & v);
 
 ostream & operator << (ostream & os, const vecteur & vec);
+istream & operator >> (istream & is, vecteur & res);
 
+vecteur operator*(double x, const vecteur& vect);
 
 #endif

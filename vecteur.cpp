@@ -95,7 +95,7 @@ vecteur &vecteur::operator+=(vecteur &vec) {
     }
 }
 
-vecteur &vecteur::operator+=(double x) {
+vecteur &vecteur::operator+=(const double x) {
     for(int i=0;i<dim_;i++){
         *(val_ + i) += x;
     }
@@ -109,17 +109,17 @@ vecteur &vecteur::operator-=(vecteur &vec) {
     }
 }
 
-vecteur &vecteur::operator-=(double x) {
+vecteur &vecteur::operator-=(const double x) {
     operator+=(-x);
 }
 
-vecteur &vecteur::operator*=(double x) {
+vecteur &vecteur::operator*=(const double x) {
     for(int i=0;i<dim_;i++){
         *(val_ + i) *= x;
     }
 }
 
-vecteur &vecteur::operator/=(double x) {
+vecteur &vecteur::operator/=(const double x) {
     if(x==0)
         throw "division by zero error !";
     for(int i=0;i<dim_;i++){
@@ -127,7 +127,7 @@ vecteur &vecteur::operator/=(double x) {
     }
 }
 
-vecteur vecteur::operator*(double x) {
+vecteur vecteur::operator*(const double x) {
     vecteur res = init(dim_);
     for(int i = 0; i< dim_;i++){
         *(res.val_ + i) = *(val_ + i) * x;
@@ -135,7 +135,7 @@ vecteur vecteur::operator*(double x) {
     return res;
 }
 
-vecteur vecteur::operator/(double x) {
+vecteur vecteur::operator/(const double x) {
     if(x==0)
         throw "division by zero error !";
     vecteur res = init(dim_);
@@ -201,6 +201,45 @@ bool operator != (vecteur &u, vecteur & v){
     }
     return false;
 }
+
+ostream & operator << (ostream & os, const vecteur & vec){
+    os << "(";
+    for (int k=0;k<vec.dim();k++) {
+        os << vec[k];
+        if(k!=vec.dim())
+            os << ",";
+    }
+    os << ")";
+    return os;
+}
+
+istream  & operator >> (istream & is, vecteur & res){
+    string st;
+    is >> st;
+    int ne = 0;
+    char* temps = new char[st.length()]();
+    /*for(int k=0;k<st.length();k++){
+        *(temps + k) = st[k];
+        if(st[k]==' ')
+            ne ++;
+    }
+    if(st[st.length()-1]==' ')
+        ne --;
+    string * sts = new string[ne]() ;
+    int ns = 0;
+    string s = "";
+    for (int i=0;i<ne;i++){
+        if(*(temps + i)==' ')
+            *(sts + i) =
+    }*/
+    res.init(0);
+    return is;
+}
+
+vecteur operator*(const double x, const vecteur& vect){
+    return ;
+}
+
 
 
 
